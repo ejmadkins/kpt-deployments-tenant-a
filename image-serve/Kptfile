@@ -1,0 +1,26 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: image-serve
+  annotations:
+    config.kubernetes.io/local-config: "true"
+upstream:
+  type: git
+  git:
+    repo: https://github.com/ejmadkins/kpt-blueprints
+    directory: /gcs-bucket
+    ref: v0
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/ejmadkins/kpt-blueprints
+    directory: /gcs-bucket
+    ref: gcs-bucket/v0
+    commit: 90f6caee7daa3a77e4087c08a7b4801c90d5e982
+info:
+  description: kpt package for provisioning Google Cloud Storage
+pipeline:
+  mutators:
+    - image: gcr.io/kpt-fn/apply-setters:v0.2
+      configPath: setters.yaml
