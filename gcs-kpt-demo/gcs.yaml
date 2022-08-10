@@ -4,6 +4,6 @@ metadata: # kpt-merge: /example
   annotations:
     cnrm.cloud.google.com/force-destroy: "false"
     cnrm.cloud.google.com/blueprint: 'kpt-pkg-fn'
-  name: example # kpt-set: ${bucket-name}
+  name: gcs-kpt-demo # kpt-set: ${bucket-name}
 spec:
-  location: example # kpt-set: ${bucket-location}
+  location: europe-west1 # kpt-set: ${bucket-location}
